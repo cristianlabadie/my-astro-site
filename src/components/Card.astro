@@ -1,5 +1,6 @@
 ---
 import Button from "./Button.vue";
+import Input from "./ui/Input.vue";
 export interface Props {
   title: string;
   body: string;
@@ -9,10 +10,13 @@ export interface Props {
 const { href, title, body } = Astro.props;
 ---
 
-<div class="card">
+<div
+  class="p-4 bg-gray-300 rounded-xl transition-all duration-300 ease-in-out hover:scale-110 hover:drop-shadow-lg"
+>
   <h2>{title}</h2>
   <p>{body}</p>
   <Button href={href} client:load />
+  <Input client:load />
 </div>
 
 <style>
