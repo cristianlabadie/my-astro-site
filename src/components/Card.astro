@@ -1,12 +1,15 @@
 ---
 import Button from "./Button.vue";
 import Input from "./ui/Input.vue";
+import { useStore } from "@nanostores/vue";
+import { isCartOpen } from "../stores/cartStore";
 export interface Props {
   title: string;
   body: string;
-  href: string;
+  href?: string;
 }
 
+const $isCartOpen = useStore(isCartOpen);
 const { href, title, body } = Astro.props;
 ---
 
@@ -17,6 +20,8 @@ const { href, title, body } = Astro.props;
   <p>{body}</p>
   <Button href={href} client:load />
   <Input client:load />
+
+  <p>Is cart open {$isCartOpen.value}</p>
 </div>
 
 <style>
